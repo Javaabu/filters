@@ -1,0 +1,89 @@
+{
+  "name": "javaabu/filters",
+  "description": "Filters and sorts for Laravel index pages: define each filter once, apply it to the query from the URL, and render the filter bar, applied-filter chips and sort controls in Blade (javaabu/forms) or Inertia React (@javaabu/forms) through javaabu/stencil.",
+  "homepage": "https://github.com/Javaabu/filters",
+  "license": "MIT",
+  "keywords": [
+    "javaabu",
+    "laravel",
+    "filters",
+    "sorting",
+    "index",
+    "query-string",
+    "stencil",
+    "blade",
+    "inertia",
+    "react",
+    "dhivehi"
+  ],
+  "authors": [
+    {
+      "name": "Javaabu Pvt. Ltd.",
+      "email": "info@javaabu.com",
+      "homepage": "https://javaabu.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.4",
+    "illuminate/contracts": "^12.0 || ^13.0",
+    "illuminate/database": "^12.0 || ^13.0",
+    "illuminate/http": "^12.0 || ^13.0",
+    "illuminate/support": "^12.0 || ^13.0",
+    "illuminate/view": "^12.0 || ^13.0",
+    "javaabu/forms": "^2.0@dev",
+    "javaabu/manifest": "^1.0@dev",
+    "javaabu/stencil": "^1.0@dev"
+  },
+  "require-dev": {
+    "javaabu/boost-javaabu-guidelines": "^1.4",
+    "laravel/pint": "^1.24",
+    "orchestra/testbench": "^10.0 || ^11.0",
+    "phpunit/phpunit": "^11.5.3 || ^12.5.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Javaabu\\Filters\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Javaabu\\Filters\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "vendor/bin/phpunit --coverage-clover=clover.xml",
+    "lint": "vendor/bin/pint --test",
+    "format": "vendor/bin/pint"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-main": "1.x-dev"
+    },
+    "laravel": {
+      "providers": [
+        "Javaabu\\Filters\\FiltersServiceProvider"
+      ]
+    }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/Javaabu/forms"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/Javaabu/manifest"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/Javaabu/stencil"
+    }
+  ],
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
