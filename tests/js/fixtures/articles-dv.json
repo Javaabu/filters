@@ -1,0 +1,323 @@
+{
+    "id": "filter",
+    "action": "/articles",
+    "form": {
+        "stencil": 1,
+        "id": "filter",
+        "action": "/articles",
+        "method": "GET",
+        "operation": "create",
+        "embedded": true,
+        "columns": {
+            "default": 1,
+            "sm": 2,
+            "lg": 4
+        },
+        "state": {
+            "search": null,
+            "status": null,
+            "category_id": null,
+            "tags": null,
+            "is_featured": "1",
+            "reviewed": null,
+            "long": null,
+            "published_at_from": null,
+            "published_at_to": null,
+            "word_count_min": null,
+            "word_count_max": null,
+            "trashed": "only"
+        },
+        "live": null,
+        "components": [
+            {
+                "type": "text",
+                "key": "search",
+                "name": "search",
+                "component": "Text",
+                "props": {
+                    "label": "ހޯދާ",
+                    "placeholder": "ހޯދާ...",
+                    "showPlaceholder": true,
+                    "thaana": true,
+                    "maxLength": 255
+                }
+            },
+            {
+                "type": "select",
+                "key": "status",
+                "name": "status[]",
+                "component": "Select",
+                "props": {
+                    "label": "Status",
+                    "options": [
+                        {
+                            "value": "draft",
+                            "label": "Draft"
+                        },
+                        {
+                            "value": "published",
+                            "label": "Published"
+                        },
+                        {
+                            "value": "archived",
+                            "label": "Archived"
+                        }
+                    ],
+                    "multiple": true,
+                    "excludeSyncField": true
+                }
+            },
+            {
+                "type": "select",
+                "key": "category_id",
+                "name": "category_id",
+                "component": "Select",
+                "props": {
+                    "label": "Category",
+                    "placeholder": "ހުރިހާ",
+                    "showPlaceholder": true,
+                    "options": [
+                        {
+                            "value": "2",
+                            "label": "ކުޅިވަރު"
+                        },
+                        {
+                            "value": "1",
+                            "label": "ޚަބަރު"
+                        }
+                    ],
+                    "excludeSyncField": true
+                }
+            },
+            {
+                "type": "select",
+                "key": "tags",
+                "name": "tags[]",
+                "component": "Select",
+                "props": {
+                    "label": "Tags",
+                    "options": [
+                        {
+                            "value": "2",
+                            "label": "World"
+                        },
+                        {
+                            "value": "1",
+                            "label": "ރާއްޖެ"
+                        }
+                    ],
+                    "multiple": true,
+                    "excludeSyncField": true
+                }
+            },
+            {
+                "type": "select",
+                "key": "is_featured",
+                "name": "is_featured",
+                "component": "Select",
+                "props": {
+                    "label": "Featured",
+                    "placeholder": "ހުރިހާ",
+                    "showPlaceholder": true,
+                    "options": [
+                        {
+                            "value": "1",
+                            "label": "އާނ"
+                        },
+                        {
+                            "value": "0",
+                            "label": "ނޫން"
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "select",
+                "key": "reviewed",
+                "name": "reviewed",
+                "component": "Select",
+                "props": {
+                    "label": "Reviewed",
+                    "placeholder": "ހުރިހާ",
+                    "showPlaceholder": true,
+                    "options": [
+                        {
+                            "value": "1",
+                            "label": "އާނ"
+                        },
+                        {
+                            "value": "0",
+                            "label": "ނޫން"
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "checkbox",
+                "key": "long",
+                "name": "long",
+                "component": "Checkbox",
+                "props": {
+                    "label": "Long reads"
+                }
+            },
+            {
+                "type": "group",
+                "key": "group-7",
+                "props": {
+                    "columns": {
+                        "default": 1,
+                        "md": 2
+                    }
+                },
+                "children": [
+                    {
+                        "type": "date",
+                        "key": "published_at_from",
+                        "name": "published_at_from",
+                        "component": "Date",
+                        "props": {
+                            "label": "Published At (އިން)"
+                        }
+                    },
+                    {
+                        "type": "date",
+                        "key": "published_at_to",
+                        "name": "published_at_to",
+                        "component": "Date",
+                        "props": {
+                            "label": "Published At (އަށް)"
+                        }
+                    }
+                ],
+                "span": {
+                    "default": "full",
+                    "lg": 2
+                }
+            },
+            {
+                "type": "group",
+                "key": "group-8",
+                "props": {
+                    "columns": {
+                        "default": 1,
+                        "md": 2
+                    }
+                },
+                "children": [
+                    {
+                        "type": "text",
+                        "key": "word_count_min",
+                        "name": "word_count_min",
+                        "component": "Number",
+                        "props": {
+                            "label": "Word Count (އިން)",
+                            "step": 1
+                        }
+                    },
+                    {
+                        "type": "text",
+                        "key": "word_count_max",
+                        "name": "word_count_max",
+                        "component": "Number",
+                        "props": {
+                            "label": "Word Count (އަށް)",
+                            "step": 1
+                        }
+                    }
+                ],
+                "span": {
+                    "default": "full",
+                    "lg": 2
+                }
+            },
+            {
+                "type": "select",
+                "key": "trashed",
+                "name": "trashed",
+                "component": "Select",
+                "props": {
+                    "label": "ފޮހެލެވިފައިވާ",
+                    "placeholder": "ފޮހެލެވިފައިވާ ތައް ނުލާ",
+                    "showPlaceholder": true,
+                    "options": [
+                        {
+                            "value": "with",
+                            "label": "ފޮހެލެވިފައިވާ ތަކާއެކު"
+                        },
+                        {
+                            "value": "only",
+                            "label": "ހަމައެކަނި ފޮހެލެވިފައިވާ ތައް"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "hidden": [],
+    "active": 2,
+    "chips": [
+        {
+            "filter": "is_featured",
+            "label": "Featured",
+            "value": "އާނ",
+            "text": "Featured: އާނ",
+            "url": "/articles?trashed=only"
+        },
+        {
+            "filter": "trashed",
+            "label": "ފޮހެލެވިފައިވާ",
+            "value": "ހަމައެކަނި ފޮހެލެވިފައިވާ ތައް",
+            "text": "ފޮހެލެވިފައިވާ: ހަމައެކަނި ފޮހެލެވިފައިވާ ތައް",
+            "url": "/articles?is_featured=1"
+        }
+    ],
+    "clearUrl": "/articles",
+    "resetUrl": "/articles",
+    "sort": {
+        "param": "orderby",
+        "directionParam": "order",
+        "current": "published_at",
+        "direction": "desc",
+        "default": "published_at",
+        "defaultDirection": "desc",
+        "options": [
+            {
+                "value": "title",
+                "label": "Title",
+                "defaultDirection": "asc",
+                "url": "/articles?is_featured=1&trashed=only&orderby=title&order=ASC"
+            },
+            {
+                "value": "published_at",
+                "label": "Published At",
+                "defaultDirection": "desc",
+                "url": "/articles?is_featured=1&trashed=only&orderby=published_at&order=ASC"
+            },
+            {
+                "value": "word_count",
+                "label": "Word Count",
+                "defaultDirection": "asc",
+                "url": "/articles?is_featured=1&trashed=only&orderby=word_count&order=ASC"
+            },
+            {
+                "value": "author",
+                "label": "Author",
+                "defaultDirection": "asc",
+                "url": "/articles?is_featured=1&trashed=only&orderby=author&order=ASC"
+            }
+        ]
+    },
+    "strings": {
+        "filters": "ފިލްޓަރުތައް",
+        "filter": "ފިލްޓަރު ކުރޭ",
+        "reset": "ފޮހެލާ",
+        "clearAll": "ހުރިހާ ފިލްޓަރެއް ފޮހެލާ",
+        "appliedFilters": "ބޭނުންކުރެވިފައިވާ ފިލްޓަރުތައް",
+        "remove": ":filter ފިލްޓަރު ފޮހެލާ",
+        "sortBy": "ތަރުތީބުކުރާނީ",
+        "direction": "ތަރުތީބު",
+        "ascending": "ކުޑައިން ބޮޑަށް",
+        "descending": "ބޮޑުން ކުޑައަށް"
+    }
+}

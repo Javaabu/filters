@@ -792,6 +792,7 @@ class Filters implements Arrayable, Htmlable, JsonSerializable
     public function getStrings(): array
     {
         return [
+            'filters' => __('filters::strings.filters'),
             'filter' => __('filters::strings.filter'),
             'reset' => __('filters::strings.reset'),
             'clearAll' => __('filters::strings.clear_all'),
@@ -857,6 +858,7 @@ class Filters implements Arrayable, Htmlable, JsonSerializable
                     'value' => $sort->getName(),
                     'label' => $sort->getLabel(),
                     'defaultDirection' => $sort->getDefaultDirection(),
+                    'url' => $this->sortUrl($sort->getName()),
                 ], $sorts)),
             ],
             'strings' => $this->getStrings(),

@@ -1,0 +1,345 @@
+{
+    "id": "filter",
+    "action": "/articles",
+    "form": {
+        "stencil": 1,
+        "id": "filter",
+        "action": "/articles",
+        "method": "GET",
+        "operation": "create",
+        "embedded": true,
+        "columns": {
+            "default": 1,
+            "sm": 2,
+            "lg": 4
+        },
+        "state": {
+            "search": "ވާރޭ",
+            "status": [
+                "draft",
+                "published"
+            ],
+            "category_id": null,
+            "tags": null,
+            "is_featured": null,
+            "reviewed": null,
+            "long": null,
+            "published_at_from": "2026-01-01",
+            "published_at_to": null,
+            "word_count_min": null,
+            "word_count_max": null,
+            "trashed": null
+        },
+        "live": null,
+        "components": [
+            {
+                "type": "text",
+                "key": "search",
+                "name": "search",
+                "component": "Text",
+                "props": {
+                    "label": "Search",
+                    "placeholder": "Search...",
+                    "showPlaceholder": true,
+                    "thaana": true,
+                    "maxLength": 255
+                }
+            },
+            {
+                "type": "select",
+                "key": "status",
+                "name": "status[]",
+                "component": "Select",
+                "props": {
+                    "label": "Status",
+                    "options": [
+                        {
+                            "value": "draft",
+                            "label": "Draft"
+                        },
+                        {
+                            "value": "published",
+                            "label": "Published"
+                        },
+                        {
+                            "value": "archived",
+                            "label": "Archived"
+                        }
+                    ],
+                    "multiple": true,
+                    "excludeSyncField": true
+                }
+            },
+            {
+                "type": "select",
+                "key": "category_id",
+                "name": "category_id",
+                "component": "Select",
+                "props": {
+                    "label": "Category",
+                    "placeholder": "All",
+                    "showPlaceholder": true,
+                    "options": [
+                        {
+                            "value": "2",
+                            "label": "ކުޅިވަރު"
+                        },
+                        {
+                            "value": "1",
+                            "label": "ޚަބަރު"
+                        }
+                    ],
+                    "excludeSyncField": true
+                }
+            },
+            {
+                "type": "select",
+                "key": "tags",
+                "name": "tags[]",
+                "component": "Select",
+                "props": {
+                    "label": "Tags",
+                    "options": [
+                        {
+                            "value": "2",
+                            "label": "World"
+                        },
+                        {
+                            "value": "1",
+                            "label": "ރާއްޖެ"
+                        }
+                    ],
+                    "multiple": true,
+                    "excludeSyncField": true
+                }
+            },
+            {
+                "type": "select",
+                "key": "is_featured",
+                "name": "is_featured",
+                "component": "Select",
+                "props": {
+                    "label": "Featured",
+                    "placeholder": "All",
+                    "showPlaceholder": true,
+                    "options": [
+                        {
+                            "value": "1",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "0",
+                            "label": "No"
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "select",
+                "key": "reviewed",
+                "name": "reviewed",
+                "component": "Select",
+                "props": {
+                    "label": "Reviewed",
+                    "placeholder": "All",
+                    "showPlaceholder": true,
+                    "options": [
+                        {
+                            "value": "1",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "0",
+                            "label": "No"
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "checkbox",
+                "key": "long",
+                "name": "long",
+                "component": "Checkbox",
+                "props": {
+                    "label": "Long reads"
+                }
+            },
+            {
+                "type": "group",
+                "key": "group-7",
+                "props": {
+                    "columns": {
+                        "default": 1,
+                        "md": 2
+                    }
+                },
+                "children": [
+                    {
+                        "type": "date",
+                        "key": "published_at_from",
+                        "name": "published_at_from",
+                        "component": "Date",
+                        "props": {
+                            "label": "Published At from"
+                        }
+                    },
+                    {
+                        "type": "date",
+                        "key": "published_at_to",
+                        "name": "published_at_to",
+                        "component": "Date",
+                        "props": {
+                            "label": "Published At to"
+                        }
+                    }
+                ],
+                "span": {
+                    "default": "full",
+                    "lg": 2
+                }
+            },
+            {
+                "type": "group",
+                "key": "group-8",
+                "props": {
+                    "columns": {
+                        "default": 1,
+                        "md": 2
+                    }
+                },
+                "children": [
+                    {
+                        "type": "text",
+                        "key": "word_count_min",
+                        "name": "word_count_min",
+                        "component": "Number",
+                        "props": {
+                            "label": "Word Count from",
+                            "step": 1
+                        }
+                    },
+                    {
+                        "type": "text",
+                        "key": "word_count_max",
+                        "name": "word_count_max",
+                        "component": "Number",
+                        "props": {
+                            "label": "Word Count to",
+                            "step": 1
+                        }
+                    }
+                ],
+                "span": {
+                    "default": "full",
+                    "lg": 2
+                }
+            },
+            {
+                "type": "select",
+                "key": "trashed",
+                "name": "trashed",
+                "component": "Select",
+                "props": {
+                    "label": "Deleted",
+                    "placeholder": "Without deleted",
+                    "showPlaceholder": true,
+                    "options": [
+                        {
+                            "value": "with",
+                            "label": "Include deleted"
+                        },
+                        {
+                            "value": "only",
+                            "label": "Only deleted"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "hidden": {
+        "author_id": "1",
+        "orderby": "title",
+        "order": "DESC",
+        "per_page": "50"
+    },
+    "active": 4,
+    "chips": [
+        {
+            "filter": "search",
+            "label": "Search",
+            "value": "ވާރޭ",
+            "text": "Search: ވާރޭ",
+            "url": "/articles?status%5B0%5D=draft&status%5B1%5D=published&published_at_from=2026-01-01&author_id=1&orderby=title&order=DESC&per_page=50"
+        },
+        {
+            "filter": "status",
+            "label": "Status",
+            "value": "Draft, Published",
+            "text": "Status: Draft, Published",
+            "url": "/articles?search=%DE%88%DE%A7%DE%83%DE%AD&published_at_from=2026-01-01&author_id=1&orderby=title&order=DESC&per_page=50"
+        },
+        {
+            "filter": "published_at",
+            "label": "Published At",
+            "value": "From 1 Jan 2026",
+            "text": "Published At: From 1 Jan 2026",
+            "url": "/articles?search=%DE%88%DE%A7%DE%83%DE%AD&status%5B0%5D=draft&status%5B1%5D=published&author_id=1&orderby=title&order=DESC&per_page=50"
+        },
+        {
+            "filter": "author_id",
+            "label": "Author",
+            "value": "ޢާއިޝާ",
+            "text": "Author: ޢާއިޝާ",
+            "url": "/articles?search=%DE%88%DE%A7%DE%83%DE%AD&status%5B0%5D=draft&status%5B1%5D=published&published_at_from=2026-01-01&orderby=title&order=DESC&per_page=50"
+        }
+    ],
+    "clearUrl": "/articles?orderby=title&order=DESC&per_page=50",
+    "resetUrl": "/articles?per_page=50",
+    "sort": {
+        "param": "orderby",
+        "directionParam": "order",
+        "current": "title",
+        "direction": "desc",
+        "default": "published_at",
+        "defaultDirection": "desc",
+        "options": [
+            {
+                "value": "title",
+                "label": "Title",
+                "defaultDirection": "asc",
+                "url": "/articles?search=%DE%88%DE%A7%DE%83%DE%AD&status%5B0%5D=draft&status%5B1%5D=published&published_at_from=2026-01-01&author_id=1&orderby=title&order=ASC&per_page=50"
+            },
+            {
+                "value": "published_at",
+                "label": "Published At",
+                "defaultDirection": "desc",
+                "url": "/articles?search=%DE%88%DE%A7%DE%83%DE%AD&status%5B0%5D=draft&status%5B1%5D=published&published_at_from=2026-01-01&author_id=1&orderby=published_at&order=DESC&per_page=50"
+            },
+            {
+                "value": "word_count",
+                "label": "Word Count",
+                "defaultDirection": "asc",
+                "url": "/articles?search=%DE%88%DE%A7%DE%83%DE%AD&status%5B0%5D=draft&status%5B1%5D=published&published_at_from=2026-01-01&author_id=1&orderby=word_count&order=ASC&per_page=50"
+            },
+            {
+                "value": "author",
+                "label": "Author",
+                "defaultDirection": "asc",
+                "url": "/articles?search=%DE%88%DE%A7%DE%83%DE%AD&status%5B0%5D=draft&status%5B1%5D=published&published_at_from=2026-01-01&author_id=1&orderby=author&order=ASC&per_page=50"
+            }
+        ]
+    },
+    "strings": {
+        "filters": "Filters",
+        "filter": "Filter",
+        "reset": "Clear",
+        "clearAll": "Clear all",
+        "appliedFilters": "Applied filters",
+        "remove": "Remove filter :filter",
+        "sortBy": "Sort by",
+        "direction": "Order",
+        "ascending": "Ascending",
+        "descending": "Descending"
+    }
+}
