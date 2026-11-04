@@ -2,6 +2,7 @@
 
 namespace Javaabu\Filters\Tests\Feature;
 
+use Carbon\CarbonImmutable;
 use Javaabu\Filters\Chip;
 use Javaabu\Filters\DateFilter;
 use Javaabu\Filters\DateRangeFilter;
@@ -113,7 +114,11 @@ class ChipsTest extends TestCase
         $chips = $this->chips(['status' => ['draft', 'published'], 'published_at_from' => '2026-01-01', 'is_featured' => '0', 'trashed' => 'only']);
 
         $this->assertSame('Draft، Published', $chips['status']->value);
-        $this->assertSame('1 ޖަނަވަރީ 2026 އިން', $chips['published_at']->value);
+        // Carbon's Dhivehi month names changed between versions.
+        $date = CarbonImmutable::parse('2026-01-01')->locale('dv')->translatedFormat('j M Y');
+
+        $this->assertSame("{$date} އިން", $chips['published_at']->value);
+        $this->assertStringContainsString('ޖ', $date);
         $this->assertSame('ނޫން', $chips['is_featured']->value);
         $this->assertSame('ފޮހެލެވިފައިވާ: ހަމައެކަނި ފޮހެލެވިފައިވާ ތައް', $chips['trashed']->text());
     }
