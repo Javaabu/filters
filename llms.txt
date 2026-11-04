@@ -1,0 +1,43 @@
+# javaabu/filters
+
+> Filters and sorts for Laravel index pages. Each filter is defined once in PHP: the javaabu/stencil fields it renders, the query parameters it reads and what it does to an Eloquent query. The filters read the URL, apply to the query with the sort, and render the filter bar, applied-filter chips and sort controls in Blade (javaabu/forms v2) or Inertia React (@javaabu/forms, through the components imported as @javaabu/filters). Dhivehi and RTL built in.
+
+Paths are relative to this file. In a project, that's vendor/javaabu/filters/.
+
+## Rules
+
+- Define reused filters as a class that extends `Javaabu\Filters\Filters` with `filters()` and `sorts()` (and `$model`, `$default_sort`, `$default_direction`); inline `Filters::make([...filters], [...sorts])` for one-offs.
+- In the controller: `$filters = ArticleFilters::make(); $query = $filters->apply(Article::query());` then paginate with `->withQueryString()` and pass `$filters` to the view or Inertia page. Never read filter values from the request yourself.
+- The URL is the state, in flat parameters: `search`, `status[]`, `{name}_from`/`{name}_to`, `{name}_min`/`{name}_max`, `orderby`/`order`, `per_page`. Don't use spatie/laravel-query-builder's `filter[...]`/`sort=-x` format for these pages.
+- Invalid values are ignored, never thrown, and only registered sorts apply. Don't add validation for filter input.
+- Name filters like stencil fields: `BelongsTo` selects by foreign key (`category_id`) with `->relationship('category', 'name')`, other relationships by name (`tags`). Relationship filters need the filters' `$model`.
+- Use the filter types (`TextFilter`, `SelectFilter`, `MultiSelectFilter`, `BooleanFilter`, `TernaryFilter`, `DateFilter`, `DateTimeFilter`, `DateRangeFilter`, `NumberRangeFilter`, `TrashedFilter`); give `->query(fn (Builder $query, $value) => …)` to change what one does, and `Filter::make()->schema([...])->query()` for a filter with fields of its own.
+- `hidden()` only removes a filter from the bar; it still applies from the URL. Leave filters out of the array for users who mustn't use them, and scope the base query for authorization.
+- Render with `{{ $filters }}` / `<x-filters::bar :filters="$filters" />` in Blade and `<FilterBar filters={filters} />` in React. Use `<x-filters::heading :filters sort="name">` / `<SortableHeading filters sort>` for sortable columns.
+- To act on "all matching" (bulk actions, exports, jobs), carry `$filters->getQueryParameters()` and rebuild with `ArticleFilters::make()->fromQuery($parameters)->apply($query)`.
+- Pass every label and option through `__()`, and add `->thaana()` to text filters that search Dhivehi.
+
+## Docs
+
+- [Introduction](docs/intro.md): what the package does
+- [Requirements](docs/requirements.md): PHP, Laravel, stencil, forms, manifest, React
+- [Installation & Setup](docs/installation-and-setup.md): installing, React with manifest's Vite plugin and the Inertia router, publishing
+- [AI assistants](docs/ai-assistants.md): Laravel Boost and these docs
+- [Defining filters](docs/basic-usage/defining-filters.md): filters classes and inline filters, the controller, values, labels, defaults, hidden filters, closures
+- [Filter types](docs/basic-usage/filter-types.md): text, select, relationships, remote options, boolean, yes/no, dates, ranges, deleted rows
+- [Sorting](docs/basic-usage/sorting.md): allowed sorts, the default sort, sortable headings, the sort dropdown
+- [Applied filters and clearing](docs/basic-usage/chips.md): chips, their values, clear one, clear all, reset
+- [Blade](docs/basic-usage/blade.md): an index page, the filter bar and its parts, exports
+- [Inertia React](docs/basic-usage/react.md): an index page, FilterBar, FilterChips, SortSelect, SortableHeading
+- [Custom filters](docs/advanced-usage/custom-filters.md): query(), filters with their own fields, filter classes and their hooks
+- [The query string](docs/advanced-usage/query-string.md): every parameter, the rules, why not spatie/laravel-query-builder
+- [Reusing filters elsewhere](docs/advanced-usage/reusing-filters.md): query parameters, "all matching" bulk actions, queued exports, package authors
+- [Configuration](docs/advanced-usage/configuration.md): every config option
+- [Customizing views](docs/advanced-usage/customizing-views.md): publishing the Blade views, overriding React components through manifest
+- [The JSON format](docs/advanced-usage/json-format.md): what the React components read
+- [Dhivehi and RTL](docs/advanced-usage/dhivehi-and-rtl.md): translations, Thaana search, dates, RTL, strings to review
+- [API reference](docs/advanced-usage/api-reference.md): every class, method and component
+- [Questions and Security](docs/questions-and-security.md): getting help and reporting security issues
+- [Changelog](docs/changelog.md): where changes are listed
+- [About Us](docs/about-us.md): Javaabu
+- [Contributing to the docs](docs/contributing-to-docs.md): how the docs are built

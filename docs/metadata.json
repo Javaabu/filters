@@ -1,0 +1,5 @@
+{
+    "name": "Filters",
+    "description": "Filters and sorts for Laravel index pages: define each filter once, apply it from the URL, and render the filter bar, chips and sort controls with Blade or Inertia React",
+    "version": "1"
+}

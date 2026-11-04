@@ -1,0 +1,11 @@
+{
+    "position": 1.32,
+    "label": "Advanced Usage",
+    "collapsible": true,
+    "collapsed": true,
+    "link": {
+        "type": "generated-index",
+        "slug": "/filters/_categories/advanced-usage",
+        "description": "Custom filters, the query string, reusing filters in exports and bulk actions, configuration, views, the JSON format, Dhivehi and the full API."
+    }
+}
