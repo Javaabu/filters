@@ -12,7 +12,6 @@ use Illuminate\Support\HtmlString;
 use Javaabu\Filters\Exceptions\FiltersException;
 use Javaabu\Stencil\Form;
 use JsonSerializable;
-use Stringable;
 
 /**
  * The filters and sorts of an index page, bound to the query string. Build
@@ -21,7 +20,7 @@ use Stringable;
  *
  * @implements Arrayable<string, mixed>
  */
-class Filters implements Arrayable, Htmlable, JsonSerializable, Stringable
+class Filters implements Arrayable, Htmlable, JsonSerializable
 {
     /** @var class-string<Model>|null */
     protected ?string $model = null;
@@ -817,17 +816,16 @@ class Filters implements Arrayable, Htmlable, JsonSerializable, Stringable
             return $this->toArray();
         }
 
-        return new HtmlString(view('filters::bar', ['filters' => $this])->render());
+        return new HtmlString(view('filters::render', ['filters' => $this])->render());
     }
 
+    /**
+     * {{ $filters }} in Blade. Filters aren't Stringable on purpose: Blade casts
+     * Stringable component attributes to strings, which would render the bar.
+     */
     public function toHtml(): string
     {
         return (string) $this->render('blade');
-    }
-
-    public function __toString(): string
-    {
-        return $this->toHtml();
     }
 
     /**

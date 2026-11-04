@@ -2,6 +2,7 @@
 
 return [
     'filter' => 'Filter',
+    'filters' => 'Filters',
     'reset' => 'Clear',
     'clear_all' => 'Clear all',
     'applied_filters' => 'Applied filters',
