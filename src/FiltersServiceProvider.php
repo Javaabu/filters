@@ -5,6 +5,7 @@ namespace Javaabu\Filters;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\ServiceProvider;
 use Javaabu\Manifest\Concerns\RegistersAssets;
+use Javaabu\Manifest\Enums\NpmScopes;
 use Javaabu\Manifest\Package;
 
 class FiltersServiceProvider extends ServiceProvider
@@ -39,6 +40,8 @@ class FiltersServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'filters');
 
+        // No Blade assets: only the React components (imported as @javaabu/filters)
+        // use these, so Blade-only apps aren't asked to install them.
         $this->registerAssets('filters', __DIR__ . '/../resources', fn (Package $package) => $package
             ->js('js')
             ->npm([
@@ -46,7 +49,7 @@ class FiltersServiceProvider extends ServiceProvider
             ], [
                 'react' => '^19.0',
                 'react-dom' => '^19.0',
-            ]));
+            ], for: NpmScopes::PAGES));
 
         if (! $this->app->runningInConsole()) {
             return;

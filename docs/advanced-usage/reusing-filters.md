@@ -84,3 +84,13 @@ return view('activitylog::activities.index', compact('filters', 'activities'));
 The Blade view renders `{{ $filters }}` or `<x-filters::bar>`; the React page (shipped through manifest) imports `FilterBar` from `@javaabu/filters` and gets the filters as JSON. `$filters->render()` returns either one by `config('filters.views')`, falling back to `config('stencil.views')`, for code that doesn't know the stack.
 
 Let apps change the filters by binding a class in your config, and document its filter names as part of your URLs.
+
+A React page that imports `@javaabu/filters` needs `@javaabu/forms` in the app. Declare it in your manifest registration for pages only, as filters does, so Blade-only apps aren't asked to install it:
+
+```php
+$package->js()->pages()->npm(
+    ['@javaabu/forms' => 'github:Javaabu/react-forms#next-gen'],
+    peer_dependencies: ['react' => '^19.0', 'react-dom' => '^19.0'],
+    for: 'pages',
+);
+```

@@ -35,7 +35,7 @@ $query = ArticleFilters::make()->fromQuery($parameters)->apply(Article::query())
 
 "All matching" bulk actions: post `$filters->getFilterParameters()` as `filters[...]`, then `ArticleFilters::make()->fromQuery($request->array('filters'))->applyFilters($query)`. Values are cleaned again. Queued exports store the parameters on the job. Filters classes used in jobs must not depend on `request()` in `filters()`.
 
-Packages render either stack: `$filters->render()` returns the Blade bar or the array by `config('filters.views')` (fallback `config('stencil.views')`).
+Packages with React pages declare `@javaabu/forms` (and `react`, `react-dom` as peers) with `->npm([...], for: 'pages')`, so Blade-only apps aren't asked for them. Packages render either stack: `$filters->render()` returns the Blade bar or the array by `config('filters.views')` (fallback `config('stencil.views')`).
 
 ## JSON (`$filters->toArray()`, typed `FiltersData`)
 

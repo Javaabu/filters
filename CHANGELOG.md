@@ -15,3 +15,4 @@ Initial development of v1.0:
 - `getQueryParameters()` and `fromQuery()` to rebuild the filtered query for exports and "all matching" bulk actions.
 - English and Dhivehi strings, RTL layouts and Thaana search.
 - Docs, `llms.txt`, and a Laravel Boost guideline and skill.
+- npm dependencies (`@javaabu/forms`, `react`, `react-dom`) are declared for pages only, so `manifest:check` doesn't ask Blade-only apps for them.

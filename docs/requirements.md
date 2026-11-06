@@ -11,6 +11,8 @@ This package requires:
 - [javaabu/forms](https://github.com/Javaabu/forms) v2, for the Blade components (installed with filters)
 - [javaabu/manifest](https://github.com/Javaabu/manifest), which ships the React components to your app (installed with filters)
 
+Blade-only apps need no npm packages for filters: the Blade bar has no JavaScript of its own (javaabu/forms ships what its fields need).
+
 For Inertia React pages:
 
 - React 19

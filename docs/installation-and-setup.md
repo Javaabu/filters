@@ -42,7 +42,7 @@ Install what the components import (`php artisan manifest:check` lists it, with 
 
 ```bash
 npm install github:Javaabu/react-forms#next-gen react react-dom
-php artisan manifest:check
+php artisan manifest:check     # checks React packages once @inertiajs/react is installed, or with --scope=pages
 php artisan manifest:types     # TypeScript paths for @javaabu/filters and @javaabu/stencil
 ```
 
@@ -67,6 +67,8 @@ createInertiaApp({
   },
 })
 ```
+
+Filters declares `@javaabu/forms`, `react` and `react-dom` for pages only, so `manifest:check` in a Blade-only app doesn't ask for them.
 
 Then import the components:
 
